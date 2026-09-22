@@ -1,0 +1,110 @@
+# Example site for the Plano Hugo theme.
+# The theme is this repository: the CI (and any local test) assembles a site in a
+# temporary directory, copies the repo as themes/plano and drops this exampleSite
+# on top of it. See .github/workflows/build.yaml and README.md.
+baseURL = 'https://example.org/'
+title = 'Plano'
+theme = 'plano'
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = false
+enableEmoji = true
+enableRobotsTXT = true
+locale = 'en-US'
+
+[pagination]
+  pagerSize = 5
+
+[languages]
+  [languages.en]
+    label = 'English'
+    locale = 'en-US'
+    contentDir = 'content/en'
+    title = 'Plano'
+    weight = 1
+    [languages.en.params]
+      description = 'Example site for the Plano theme.'
+      DateFormat = 'January 2, 2006'
+      [languages.en.params.homeInfoParams]
+        Title = 'Plano'
+        Content = 'A blueprint-flavored Hugo theme: warm paper, cobalt grid and one single accent color.'
+    [[languages.en.menu.main]]
+      name = 'Posts'
+      url = 'posts/'
+      weight = 10
+    [[languages.en.menu.main]]
+      name = 'About'
+      url = 'about/'
+      weight = 20
+    [[languages.en.menu.main]]
+      name = 'Search'
+      url = 'search/'
+      weight = 30
+
+  [languages.es]
+    label = 'Español'
+    locale = 'es-ES'
+    contentDir = 'content/es'
+    title = 'Plano'
+    weight = 2
+    [languages.es.params]
+      description = 'Sitio de ejemplo del tema Plano.'
+      DateFormat = '2006-01-02'
+      [languages.es.params.homeInfoParams]
+        Title = 'Plano'
+        Content = 'Un tema de Hugo con aire de plano: papel cálido, rejilla cobalto y un único acento.'
+    [[languages.es.menu.main]]
+      name = 'Entradas'
+      url = 'posts/'
+      weight = 10
+    [[languages.es.menu.main]]
+      name = 'Acerca'
+      url = 'about/'
+      weight = 20
+    [[languages.es.menu.main]]
+      name = 'Buscar'
+      url = 'search/'
+      weight = 30
+
+[params]
+  author = 'Example Author'
+  # The theme is light; the dark variant is opt-in through the header toggle.
+  # Set to true to remove the toggle and stay light always.
+  disableThemeToggle = false
+  mainSections = ['posts']
+  homeLimit = 4
+  ShowReadingTime = true
+  ShowWordCount = true
+  ShowLastMod = false
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowRssButtonInSectionTermList = true
+  ShowToc = true
+  TocOpen = false
+
+[[params.socialIcons]]
+  name = 'GitHub'
+  url = 'https://github.com/vstrofago'
+[[params.socialIcons]]
+  name = 'RSS'
+  url = 'index.xml'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+    anchorLineNos = false
+    tabWidth = 2
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
+
+# The JSON output feeds the client-side search (see assets/js/vf-search.js).
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
